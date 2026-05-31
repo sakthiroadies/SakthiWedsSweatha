@@ -84,7 +84,7 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
   return (
     <div
       onClick={handle}
-      className={`fixed inset-0 z-50 flex items-end justify-center pb-20 sm:pb-10 ${started ? "" : "cursor-pointer"} transition-all duration-[1100ms] ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-end justify-center pb-16 sm:pb-20 ${started ? "" : "cursor-pointer"} transition-all duration-[1100ms] ease-in-out ${
         closing ? "opacity-0 scale-110" : "opacity-100 scale-100"
       }`}
       style={{ width: "100vw", height: "100vh" }}
