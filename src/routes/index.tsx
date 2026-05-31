@@ -190,15 +190,14 @@ function ScratchCard() {
     canvas.style.height = rect.height + "px";
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(dpr, dpr);
-    // Gold gradient overlay
     const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
     grad.addColorStop(0, "#d4a017");
     grad.addColorStop(0.5, "#f5d76e");
     grad.addColorStop(1, "#b8860b");
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, rect.width, rect.height);
-    // Sparkle dots
     ctx.fillStyle = "rgba(255,255,255,0.7)";
     for (let i = 0; i < 60; i++) {
       ctx.beginPath();
@@ -211,6 +210,14 @@ function ScratchCard() {
     ctx.textBaseline = "middle";
     ctx.fillText("✨ Scratch here ✨", rect.width / 2, rect.height / 2);
   };
+
+  useEffect(() => {
+    init();
+    const onResize = () => { if (!revealed) init(); };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getPos = (e: React.PointerEvent) => {
     const canvas = canvasRef.current!;
