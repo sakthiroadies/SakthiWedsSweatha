@@ -52,11 +52,8 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
   const [closing, setClosing] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, []);
-
   const handle = () => {
+    videoRef.current?.play().catch(() => {});
     setClosing(true);
     setTimeout(onOpen, 1100);
   };
