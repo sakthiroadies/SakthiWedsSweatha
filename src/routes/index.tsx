@@ -268,10 +268,6 @@ function ScratchCard() {
           }}
           onPointerMove={scratch}
           onPointerUp={() => (isDrawing.current = false)}
-          onPointerEnter={() => {
-            if (canvasRef.current && !canvasRef.current.width) init();
-          }}
-          ref-callback={init}
           className={`absolute inset-0 w-full h-full cursor-grab touch-none transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
           style={{ touchAction: "none" }}
         />
