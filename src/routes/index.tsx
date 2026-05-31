@@ -108,7 +108,7 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       {!started && (
-        <div className="z-10 flex flex-col items-center gap-4 animate-fade-up">
+        <div className="z-10 flex flex-col items-center gap-4 animate-fade-up mb-24">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-rose-300/40 blur-xl animate-pulse" />
             <div className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl bg-white/95 animate-heart-bounce ring-2 ring-gold/60">
