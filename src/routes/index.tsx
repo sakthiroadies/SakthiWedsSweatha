@@ -694,8 +694,7 @@ function Venue() {
           href={MAP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-3 text-xs sm:text-sm tracking-[0.25em] uppercase text-white shadow-2xl backdrop-blur-md bg-white/15 border border-white/40 hover:bg-white/25 hover:scale-105 transition-all"
-          style={{ top: "78%" }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-10 inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-3 text-xs sm:text-sm tracking-[0.25em] uppercase text-white shadow-2xl backdrop-blur-md bg-white/15 border border-white/40 hover:bg-white/25 hover:scale-105 transition-all"
         >
           <MapPin className="h-4 w-4" /> View on Map
         </a>
