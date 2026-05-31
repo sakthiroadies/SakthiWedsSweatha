@@ -52,15 +52,26 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
   const [closing, setClosing] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
+  const [started, setStarted] = useState(false);
+
   const handle = () => {
-    videoRef.current?.play().catch(() => {});
-    setClosing(true);
-    setTimeout(onOpen, 1100);
+    if (started) return;
+    setStarted(true);
+    const v = videoRef.current;
+    v?.play().catch(() => {});
+    const duration = (v && !isNaN(v.duration) && v.duration > 0) ? v.duration * 1000 : 6000;
+    // Begin fade ~1.1s before end, then unmount
+    setTimeout(() => setClosing(true), Math.max(0, duration - 1100));
+    setTimeout(onOpen, duration);
+    v?.addEventListener("ended", () => {
+      setClosing(true);
+      setTimeout(onOpen, 1100);
+    });
   };
   return (
     <div
       onClick={handle}
-      className={`fixed inset-0 z-50 flex items-end justify-center pb-20 cursor-pointer transition-all duration-[1100ms] ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-end justify-center pb-20 ${started ? "" : "cursor-pointer"} transition-all duration-[1100ms] ease-in-out ${
         closing ? "opacity-0 scale-110" : "opacity-100 scale-100"
       }`}
       style={{ width: "100vw", height: "100vh" }}
