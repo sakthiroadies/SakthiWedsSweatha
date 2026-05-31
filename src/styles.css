@@ -208,3 +208,13 @@
 @utility animate-heart-bounce {
   animation: heart-bounce 1.8s ease-in-out infinite;
 }
+
+@keyframes reveal-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@utility animate-reveal-pulse {
+  animation: reveal-pulse 700ms ease-out;
+}

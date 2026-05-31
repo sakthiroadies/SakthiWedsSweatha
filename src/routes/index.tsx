@@ -208,36 +208,32 @@ function SaveTheDate() {
         </h2>
         <Ornament />
         <ScratchCard />
-        <p
-          className="mt-4 tracking-[0.25em] uppercase text-white/80"
-          style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.875rem)" }}
-        >
-          ✨ Scratch to reveal the date ✨
-        </p>
       </div>
     </section>
   );
 }
 
 function fireConfetti() {
-  const colors = ["#d4a017", "#f5d76e", "#ffffff", "#b22222", "#8b0000"];
-  const end = Date.now() + 3500;
+  const colors = ["#d4a017", "#f5d76e", "#ffffff", "#e8b4b4"];
+  const end = Date.now() + 3000;
   const frame = () => {
     confetti({
-      particleCount: 4,
+      particleCount: 2,
       angle: 60,
-      spread: 70,
-      startVelocity: 55,
+      spread: 55,
+      startVelocity: 45,
       origin: { x: 0, y: 0.7 },
       colors,
+      scalar: 0.9,
     });
     confetti({
-      particleCount: 4,
+      particleCount: 2,
       angle: 120,
-      spread: 70,
-      startVelocity: 55,
+      spread: 55,
+      startVelocity: 45,
       origin: { x: 1, y: 0.7 },
       colors,
+      scalar: 0.9,
     });
     if (Date.now() < end) requestAnimationFrame(frame);
   };
@@ -248,6 +244,7 @@ function ScratchCard() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [maskGone, setMaskGone] = useState(false);
   const isDrawing = useRef(false);
   const firedRef = useRef(false);
 
@@ -304,7 +301,9 @@ function ScratchCard() {
     if (firedRef.current) return;
     firedRef.current = true;
     setRevealed(true);
-    setTimeout(fireConfetti, 250);
+    fireConfetti();
+    // Fully clear remaining mask after fade
+    setTimeout(() => setMaskGone(true), 600);
   };
 
   const getPos = (e: React.PointerEvent) => {
@@ -327,12 +326,13 @@ function ScratchCard() {
     const { width, height } = canvas;
     const data = ctx.getImageData(0, 0, width, height).data;
     let cleared = 0;
+    const total = data.length / 40;
     for (let i = 3; i < data.length; i += 40) if (data[i] === 0) cleared++;
-    if (cleared / (data.length / 40) > 0.5) triggerReveal();
+    if (cleared / total >= 0.6) triggerReveal();
   };
 
   return (
-    <div className="mt-6 flex justify-center">
+    <div className="mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
         className="relative w-full max-w-md h-32 md:h-36 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
@@ -345,20 +345,36 @@ function ScratchCard() {
             18<sup>th</sup> June 2026
           </p>
         </div>
-        <canvas
-          ref={canvasRef}
-          onPointerDown={(e) => {
-            if (revealed) return;
-            (e.target as HTMLCanvasElement).setPointerCapture(e.pointerId);
-            if (canvasRef.current && !canvasRef.current.width) init();
-            isDrawing.current = true;
-            scratch(e);
-          }}
-          onPointerMove={scratch}
-          onPointerUp={() => (isDrawing.current = false)}
-          className={`absolute inset-0 w-full h-full cursor-grab touch-none transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
-          style={{ touchAction: "none" }}
-        />
+        {!maskGone && (
+          <canvas
+            ref={canvasRef}
+            onPointerDown={(e) => {
+              if (revealed) return;
+              (e.target as HTMLCanvasElement).setPointerCapture(e.pointerId);
+              if (canvasRef.current && !canvasRef.current.width) init();
+              isDrawing.current = true;
+              scratch(e);
+            }}
+            onPointerMove={scratch}
+            onPointerUp={() => (isDrawing.current = false)}
+            className={`absolute inset-0 w-full h-full cursor-grab touch-none transition-opacity duration-500 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+            style={{ touchAction: "none" }}
+          />
+        )}
+      </div>
+      <div className="mt-4 h-6 relative w-full flex items-center justify-center">
+        <p
+          className={`absolute tracking-[0.25em] uppercase text-white/80 transition-opacity duration-500 ${revealed ? "opacity-0" : "opacity-100"}`}
+          style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.875rem)" }}
+        >
+          ✨ Scratch to reveal the date ✨
+        </p>
+        <p
+          className={`absolute font-script text-gold transition-all duration-700 ${maskGone ? "opacity-100 animate-reveal-pulse" : "opacity-0"}`}
+          style={{ fontSize: "clamp(1rem, 3.2vw, 1.35rem)" }}
+        >
+          We can't wait to celebrate with you!
+        </p>
       </div>
     </div>
   );
