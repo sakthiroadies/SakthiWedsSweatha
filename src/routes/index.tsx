@@ -163,14 +163,113 @@ function SaveTheDate() {
           Sweatha &amp; Sakthivel
         </h2>
         <Ornament />
-        <p className="font-serif text-xl md:text-2xl mt-2">
-          17<sup>th</sup> &amp; 18<sup>th</sup> June 2026
-        </p>
-        <p className="text-sm md:text-base mt-1 text-white/80 italic">
-          Vellore, Tamil Nadu
+        <ScratchCard />
+        <p className="text-xs md:text-sm mt-4 tracking-[0.25em] uppercase text-white/80">
+          ✨ Scratch to reveal the date ✨
         </p>
       </div>
     </section>
+  );
+}
+
+function ScratchCard() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [revealed, setRevealed] = useState(false);
+  const isDrawing = useRef(false);
+
+  const init = () => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+    const rect = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.scale(dpr, dpr);
+    // Gold gradient overlay
+    const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+    grad.addColorStop(0, "#d4a017");
+    grad.addColorStop(0.5, "#f5d76e");
+    grad.addColorStop(1, "#b8860b");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, rect.width, rect.height);
+    // Sparkle dots
+    ctx.fillStyle = "rgba(255,255,255,0.7)";
+    for (let i = 0; i < 60; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.fillStyle = "rgba(255,255,255,0.95)";
+    ctx.font = "italic 18px 'Cormorant Garamond', serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("✨ Scratch here ✨", rect.width / 2, rect.height / 2);
+  };
+
+  const getPos = (e: React.PointerEvent) => {
+    const canvas = canvasRef.current!;
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  };
+
+  const scratch = (e: React.PointerEvent) => {
+    if (!isDrawing.current || revealed) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const { x, y } = getPos(e);
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x, y, 28, 0, Math.PI * 2);
+    ctx.fill();
+    // Check reveal %
+    const { width, height } = canvas;
+    const data = ctx.getImageData(0, 0, width, height).data;
+    let cleared = 0;
+    for (let i = 3; i < data.length; i += 40) if (data[i] === 0) cleared++;
+    if (cleared / (data.length / 40) > 0.5) setRevealed(true);
+  };
+
+  return (
+    <div className="mt-6 flex justify-center">
+      <div
+        ref={containerRef}
+        className="relative w-full max-w-md h-32 md:h-36 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
+      >
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <p className="font-script text-3xl md:text-4xl text-gold">
+            17<sup>th</sup> &amp; 18<sup>th</sup> June 2026
+          </p>
+          <p className="text-xs md:text-sm mt-1 text-white/90 italic">
+            Vellore, Tamil Nadu
+          </p>
+        </div>
+        <canvas
+          ref={canvasRef}
+          onPointerDown={(e) => {
+            (e.target as HTMLCanvasElement).setPointerCapture(e.pointerId);
+            if (canvasRef.current && !canvasRef.current.width) init();
+            isDrawing.current = true;
+            scratch(e);
+          }}
+          onPointerMove={scratch}
+          onPointerUp={() => (isDrawing.current = false)}
+          onPointerEnter={() => {
+            if (canvasRef.current && !canvasRef.current.width) init();
+          }}
+          ref-callback={init}
+          className={`absolute inset-0 w-full h-full cursor-grab touch-none transition-opacity duration-700 ${revealed ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+          style={{ touchAction: "none" }}
+        />
+      </div>
+    </div>
   );
 }
 
