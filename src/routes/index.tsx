@@ -432,14 +432,14 @@ function Timeline() {
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-background">
       <div className="text-center mb-12 sm:mb-16">
         <p
-          className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-          style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+          className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+          style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
         >
           Celebrate with us
         </p>
         <h2
-          className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-          style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+          className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+          style={{ fontSize: "clamp(2.7rem, 11vw, 5.5rem)" }}
         >
           Wedding Timeline
         </h2>
@@ -487,14 +487,14 @@ function Functions() {
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-secondary/40">
       <div className="text-center mb-12 sm:mb-14">
         <p
-          className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-          style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+          className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+          style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
         >
           Celebrate with us
         </p>
         <h2
-          className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-          style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+          className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+          style={{ fontSize: "clamp(3.1rem, 14vw, 5.5rem)" }}
         >
           The Functions
         </h2>
@@ -535,14 +535,14 @@ function Venue() {
   return (
     <section className="py-20 sm:py-24 px-5 sm:px-6 text-center">
       <p
-        className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-        style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+        className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+        style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
       >
         Where it happens
       </p>
       <h2
-        className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-        style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+        className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+        style={{ fontSize: "clamp(3.4rem, 16vw, 5.5rem)" }}
       >
         The Venue
       </h2>
