@@ -132,14 +132,14 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-5 sm:px-6 text-center animate-fade-up">
       <p
-        className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-        style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+        className="tracking-[0.18em] sm:tracking-[0.4em] uppercase text-gold-deep max-w-full"
+        style={{ fontSize: "clamp(0.56rem, 2vw, 0.875rem)" }}
       >
         You are invited to the wedding of
       </p>
       <h1
-        className="mt-6 font-script text-gradient-gold leading-[1.1] pb-2 max-w-full break-words"
-        style={{ fontSize: "clamp(3.75rem, 14vw, 8.5rem)" }}
+        className="mt-4 font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
       >
         Sweatha
       </h1>
@@ -148,12 +148,12 @@ function Hero() {
         <span className="font-script text-3xl text-gold-deep">&amp;</span>
         <span className="h-px w-12 sm:w-16 bg-gold/60" />
       </div>
-      <h1
-        className="font-script text-gradient-gold leading-[1.1] pb-2 max-w-full break-words"
-        style={{ fontSize: "clamp(3.75rem, 14vw, 8.5rem)" }}
+      <div
+        className="font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
       >
         Sakthivel
-      </h1>
+      </div>
       <Ornament />
       <p
         className="text-muted-foreground italic"
@@ -189,8 +189,8 @@ function SaveTheDate() {
           Save the Date
         </p>
         <h2
-          className="font-script mt-4 text-gold leading-[1.1] pb-2 break-words"
-          style={{ fontSize: "clamp(2.75rem, 11vw, 6rem)" }}
+          className="font-script mt-3 text-gold script-safe script-safe-nowrap max-w-full"
+          style={{ fontSize: "clamp(2.1rem, 10.5vw, 6rem)" }}
         >
           Sweatha &amp; Sakthivel
         </h2>
@@ -345,12 +345,13 @@ function ScratchCard() {
 }
 
 function Countdown() {
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
-  const diff = Math.max(0, WEDDING_DATE - now);
+  const diff = now === null ? 0 : Math.max(0, WEDDING_DATE - now);
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff / 3600000) % 24);
   const minutes = Math.floor((diff / 60000) % 60);
@@ -364,8 +365,8 @@ function Countdown() {
   return (
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-[oklch(0.16_0.02_30)] text-white">
       <p
-        className="text-center tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold"
-        style={{ fontSize: "clamp(0.7rem, 2vw, 0.9rem)" }}
+        className="text-center tracking-[0.16em] sm:tracking-[0.4em] uppercase text-gold"
+        style={{ fontSize: "clamp(0.58rem, 2vw, 0.9rem)" }}
       >
         Counting down to our forever
       </p>
@@ -379,7 +380,7 @@ function Countdown() {
               className="font-serif text-gold leading-none tabular-nums"
               style={{ fontSize: "clamp(2.25rem, 9vw, 4rem)" }}
             >
-              {String(it.value).padStart(2, "0")}
+              {now === null ? "--" : String(it.value).padStart(2, "0")}
             </span>
             <span
               className="mt-2 tracking-[0.25em] uppercase text-white/75"
