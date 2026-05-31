@@ -14,9 +14,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Sweatha & Sakthivel — Wedding Invitation" },
-      { name: "description", content: "Together with our families, we joyfully invite you to celebrate the wedding of V. Sweatha and R. Sakthivel — 17th & 18th June 2026, Vellore." },
+      {
+        name: "description",
+        content:
+          "Together with our families, we joyfully invite you to celebrate the wedding of V. Sweatha and R. Sakthivel — 17th & 18th June 2026, Vellore.",
+      },
       { property: "og:title", content: "Sweatha & Sakthivel — Wedding Invitation" },
-      { property: "og:description", content: "Join us in celebrating our wedding on the 17th & 18th of June 2026 at Sri Narayani Mahal, Vellore." },
+      {
+        property: "og:description",
+        content:
+          "Join us in celebrating our wedding on the 17th & 18th of June 2026 at Sri Narayani Mahal, Vellore.",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -64,7 +72,7 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
     setStarted(true);
     const v = videoRef.current;
     v?.play().catch(() => {});
-    const duration = (v && !isNaN(v.duration) && v.duration > 0) ? v.duration * 1000 : 6000;
+    const duration = v && !isNaN(v.duration) && v.duration > 0 ? v.duration * 1000 : 6000;
     setTimeout(() => setClosing(true), Math.max(0, duration - 1100));
     setTimeout(onOpen, duration);
     v?.addEventListener("ended", () => {
@@ -103,7 +111,11 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-rose-300/40 blur-xl animate-pulse" />
             <div className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl bg-white/95 animate-heart-bounce ring-2 ring-gold/60">
-              <Heart className="h-7 w-7" style={{ color: "hsl(345, 75%, 55%)" }} fill="currentColor" />
+              <Heart
+                className="h-7 w-7"
+                style={{ color: "hsl(345, 75%, 55%)" }}
+                fill="currentColor"
+              />
             </div>
           </div>
           <p
@@ -132,14 +144,14 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-5 sm:px-6 text-center animate-fade-up">
       <p
-        className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-        style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+        className="tracking-[0.18em] sm:tracking-[0.4em] uppercase text-gold-deep max-w-full"
+        style={{ fontSize: "clamp(0.56rem, 2vw, 0.875rem)" }}
       >
         You are invited to the wedding of
       </p>
       <h1
-        className="mt-6 font-script text-gradient-gold leading-[1.1] pb-2 max-w-full break-words"
-        style={{ fontSize: "clamp(3.75rem, 14vw, 8.5rem)" }}
+        className="mt-4 font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
       >
         Sweatha
       </h1>
@@ -148,12 +160,12 @@ function Hero() {
         <span className="font-script text-3xl text-gold-deep">&amp;</span>
         <span className="h-px w-12 sm:w-16 bg-gold/60" />
       </div>
-      <h1
-        className="font-script text-gradient-gold leading-[1.1] pb-2 max-w-full break-words"
-        style={{ fontSize: "clamp(3.75rem, 14vw, 8.5rem)" }}
+      <div
+        className="font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
       >
         Sakthivel
-      </h1>
+      </div>
       <Ornament />
       <p
         className="text-muted-foreground italic"
@@ -189,8 +201,8 @@ function SaveTheDate() {
           Save the Date
         </p>
         <h2
-          className="font-script mt-4 text-gold leading-[1.1] pb-2 break-words"
-          style={{ fontSize: "clamp(2.75rem, 11vw, 6rem)" }}
+          className="font-script mt-3 text-gold script-safe script-safe-nowrap max-w-full"
+          style={{ fontSize: "clamp(2.1rem, 10.5vw, 6rem)" }}
         >
           Sweatha &amp; Sakthivel
         </h2>
@@ -262,7 +274,13 @@ function ScratchCard() {
     ctx.fillStyle = "rgba(255,255,255,0.7)";
     for (let i = 0; i < 60; i++) {
       ctx.beginPath();
-      ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 0.5, 0, Math.PI * 2);
+      ctx.arc(
+        Math.random() * rect.width,
+        Math.random() * rect.height,
+        Math.random() * 2 + 0.5,
+        0,
+        Math.PI * 2,
+      );
       ctx.fill();
     }
     ctx.fillStyle = "rgba(255,255,255,0.95)";
@@ -274,7 +292,9 @@ function ScratchCard() {
 
   useEffect(() => {
     init();
-    const onResize = () => { if (!revealed) init(); };
+    const onResize = () => {
+      if (!revealed) init();
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -345,12 +365,13 @@ function ScratchCard() {
 }
 
 function Countdown() {
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
-  const diff = Math.max(0, WEDDING_DATE - now);
+  const diff = now === null ? 0 : Math.max(0, WEDDING_DATE - now);
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff / 3600000) % 24);
   const minutes = Math.floor((diff / 60000) % 60);
@@ -364,8 +385,8 @@ function Countdown() {
   return (
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-[oklch(0.16_0.02_30)] text-white">
       <p
-        className="text-center tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold"
-        style={{ fontSize: "clamp(0.7rem, 2vw, 0.9rem)" }}
+        className="text-center tracking-[0.16em] sm:tracking-[0.4em] uppercase text-gold"
+        style={{ fontSize: "clamp(0.58rem, 2vw, 0.9rem)" }}
       >
         Counting down to our forever
       </p>
@@ -379,7 +400,7 @@ function Countdown() {
               className="font-serif text-gold leading-none tabular-nums"
               style={{ fontSize: "clamp(2.25rem, 9vw, 4rem)" }}
             >
-              {String(it.value).padStart(2, "0")}
+              {now === null ? "--" : String(it.value).padStart(2, "0")}
             </span>
             <span
               className="mt-2 tracking-[0.25em] uppercase text-white/75"
@@ -396,7 +417,15 @@ function Countdown() {
 
 function ReceptionIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 64 64"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="22" cy="14" r="4.5" />
       <circle cx="42" cy="14" r="4.5" />
       <path d="M22 19c-4 0-7 3-7 8v10l4-1v15" />
@@ -410,7 +439,15 @@ function ReceptionIcon({ className = "" }: { className?: string }) {
 
 function WeddingIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 64 64"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M14 50V30c0-5 4-9 9-9h18c5 0 9 4 9 9v20" />
       <path d="M22 21c0-4 4-7 10-7s10 3 10 7" />
       <path d="M32 8v6" />
@@ -424,21 +461,31 @@ function WeddingIcon({ className = "" }: { className?: string }) {
 
 function Timeline() {
   const events = [
-    { Icon: ReceptionIcon, title: "Reception", date: "17th June 2026, Wednesday", time: "6:30 PM onwards" },
-    { Icon: WeddingIcon, title: "Wedding Ceremony", date: "18th June 2026, Thursday", time: "7:30 AM – 9:00 AM" },
+    {
+      Icon: ReceptionIcon,
+      title: "Reception",
+      date: "17th June 2026, Wednesday",
+      time: "6:30 PM onwards",
+    },
+    {
+      Icon: WeddingIcon,
+      title: "Wedding Ceremony",
+      date: "18th June 2026, Thursday",
+      time: "7:30 AM – 9:00 AM",
+    },
   ];
   return (
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-background">
       <div className="text-center mb-12 sm:mb-16">
         <p
-          className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-          style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+          className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+          style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
         >
           Celebrate with us
         </p>
         <h2
-          className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-          style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+          className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+          style={{ fontSize: "clamp(2.7rem, 11vw, 5.5rem)" }}
         >
           Wedding Timeline
         </h2>
@@ -454,13 +501,19 @@ function Timeline() {
               <div key={e.title} className="relative flex items-center animate-fade-up">
                 {/* Mobile: stacked */}
                 <div className="sm:hidden pl-16 w-full">
-                  <h3 className="font-serif text-xl text-maroon font-semibold leading-snug">{e.title}</h3>
+                  <h3 className="font-serif text-xl text-maroon font-semibold leading-snug">
+                    {e.title}
+                  </h3>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
                   <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
                 </div>
                 {/* Desktop: alternating */}
-                <div className={`hidden sm:block w-1/2 ${left ? "pr-12 text-right" : "pl-12 order-3 text-left"}`}>
-                  <h3 className="font-serif text-2xl text-maroon font-semibold leading-snug">{e.title}</h3>
+                <div
+                  className={`hidden sm:block w-1/2 ${left ? "pr-12 text-right" : "pl-12 order-3 text-left"}`}
+                >
+                  <h3 className="font-serif text-2xl text-maroon font-semibold leading-snug">
+                    {e.title}
+                  </h3>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
                   <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
                 </div>
@@ -486,14 +539,14 @@ function Functions() {
     <section className="py-20 sm:py-24 px-5 sm:px-6 bg-secondary/40">
       <div className="text-center mb-12 sm:mb-14">
         <p
-          className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-          style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+          className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+          style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
         >
           Celebrate with us
         </p>
         <h2
-          className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-          style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+          className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+          style={{ fontSize: "clamp(3.1rem, 14vw, 5.5rem)" }}
         >
           The Functions
         </h2>
@@ -534,14 +587,14 @@ function Venue() {
   return (
     <section className="py-20 sm:py-24 px-5 sm:px-6 text-center">
       <p
-        className="tracking-[0.32em] sm:tracking-[0.4em] uppercase text-gold-deep"
-        style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
+        className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
+        style={{ fontSize: "clamp(0.6rem, 2vw, 0.875rem)" }}
       >
         Where it happens
       </p>
       <h2
-        className="font-script text-gradient-gold mt-2 leading-[1.1] pb-2"
-        style={{ fontSize: "clamp(2.75rem, 10vw, 5.5rem)" }}
+        className="font-script text-gradient-gold mt-2 script-safe script-safe-nowrap mx-auto max-w-full"
+        style={{ fontSize: "clamp(3.4rem, 16vw, 5.5rem)" }}
       >
         The Venue
       </h2>
@@ -555,7 +608,8 @@ function Venue() {
           Sri Narayani Mahal (A/C)
         </p>
         <p className="text-muted-foreground mt-3 leading-relaxed text-sm sm:text-base">
-          Thirumalaikodi, Sripuram, Ariyur,<br />
+          Thirumalaikodi, Sripuram, Ariyur,
+          <br />
           Vellore – 632 055, Tamil Nadu
         </p>
       </div>

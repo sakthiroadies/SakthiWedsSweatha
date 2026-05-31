@@ -75,61 +75,136 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-serif);
   }
-  h1, h2, h3, h4 { font-family: var(--font-serif); }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+  }
 }
 
-@utility font-script { font-family: var(--font-script); }
-@utility text-gold { color: var(--color-gold); }
-@utility text-gold-deep { color: var(--color-gold-deep); }
-@utility bg-gold { background-color: var(--color-gold); }
-@utility text-maroon { color: var(--color-maroon); }
-@utility bg-gradient-gold { background-image: var(--gradient-gold); }
+@utility font-script {
+  font-family: var(--font-script);
+}
+@utility text-gold {
+  color: var(--color-gold);
+}
+@utility text-gold-deep {
+  color: var(--color-gold-deep);
+}
+@utility bg-gold {
+  background-color: var(--color-gold);
+}
+@utility text-maroon {
+  color: var(--color-maroon);
+}
+@utility bg-gradient-gold {
+  background-image: var(--gradient-gold);
+}
 @utility text-gradient-gold {
   background-image: var(--gradient-gold);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-@utility shadow-elegant { box-shadow: var(--shadow-elegant); }
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+@utility script-safe {
+  display: inline-block;
+  line-height: 1.35;
+  padding-block: 0.16em 0.24em;
+  padding-inline: 0.12em;
+}
+@utility script-safe-nowrap {
+  white-space: nowrap;
+  overflow: visible;
+}
 
 @keyframes curtain-left {
-  to { transform: translateX(-100%); }
+  to {
+    transform: translateX(-100%);
+  }
 }
 @keyframes curtain-right {
-  to { transform: translateX(100%); }
+  to {
+    transform: translateX(100%);
+  }
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes shimmer {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes intro-zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 @keyframes heart-bounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.06); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.06);
+  }
 }
 
-@utility animate-curtain-left { animation: curtain-left 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
-@utility animate-curtain-right { animation: curtain-right 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
-@utility animate-fade-up { animation: fade-up 1s ease-out forwards; }
-@utility animate-shimmer { animation: shimmer 2.5s ease-in-out infinite; }
-@utility animate-float { animation: float 3s ease-in-out infinite; }
-@utility animate-intro-zoom { animation: intro-zoom 6s ease-out forwards; transform-origin: center; }
-@utility animate-heart-bounce { animation: heart-bounce 1.8s ease-in-out infinite; }
+@utility animate-curtain-left {
+  animation: curtain-left 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+@utility animate-curtain-right {
+  animation: curtain-right 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+@utility animate-fade-up {
+  animation: fade-up 1s ease-out forwards;
+}
+@utility animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+@utility animate-intro-zoom {
+  animation: intro-zoom 6s ease-out forwards;
+  transform-origin: center;
+}
+@utility animate-heart-bounce {
+  animation: heart-bounce 1.8s ease-in-out infinite;
+}
