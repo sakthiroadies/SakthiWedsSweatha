@@ -27,10 +27,17 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [opened, setOpened] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleOpen = () => {
+    setOpened(true);
+    audioRef.current?.play().catch(() => {});
+  };
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-      {!opened && <IntroCurtain onOpen={() => setOpened(true)} />}
+      <audio ref={audioRef} src="/music/bg-music.mp3" loop preload="auto" className="hidden" />
+      {!opened && <IntroCurtain onOpen={handleOpen} />}
       <Hero />
       <SaveTheDate />
       <Timeline />
@@ -43,6 +50,12 @@ function Index() {
 
 function IntroCurtain({ onOpen }: { onOpen: () => void }) {
   const [closing, setClosing] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    videoRef.current?.play().catch(() => {});
+  }, []);
+
   const handle = () => {
     setClosing(true);
     setTimeout(onOpen, 1100);
@@ -58,20 +71,25 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
       aria-label="Open the invitation"
     >
       <img
-        src={introPoster}
+        src="/images/intro-poster.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
+      <video
+        ref={videoRef}
+        src="/videos/intro.mp4"
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover md:object-[center_60%]"
+      />
       <div className="absolute inset-0 bg-black/20" />
       <div className="z-10 flex flex-col items-center gap-3">
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-white animate-float"
-        >
+        <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-white animate-float">
           <Heart className="h-7 w-7" style={{ color: "hsl(330, 70%, 60%)" }} fill="currentColor" />
         </div>
-        <p
-          className="font-serif text-lg tracking-[0.2em] uppercase drop-shadow-lg text-white"
-        >
+        <p className="font-serif text-lg tracking-[0.2em] uppercase drop-shadow-lg text-white">
           Open the Invitation
         </p>
       </div>
