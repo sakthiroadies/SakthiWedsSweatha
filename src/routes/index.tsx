@@ -4,6 +4,7 @@ import confetti from "canvas-confetti";
 import saveTheDate from "@/assets/save-the-date.jpg";
 import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
+import venueImg from "@/assets/venue.jpg";
 import { Heart, MapPin, Sparkles, Music } from "lucide-react";
 
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
@@ -643,7 +644,7 @@ function Venue() {
 
       <div className="mt-8 mx-auto max-w-3xl relative rounded-2xl overflow-hidden shadow-elegant ring-1 ring-gold/30">
         <img
-          src={saveTheDate}
+          src={venueImg}
           alt="Sri Narayani Mahal"
           loading="lazy"
           className="w-full h-[260px] sm:h-[380px] md:h-[440px] object-cover"
