@@ -143,46 +143,85 @@ function Ornament() {
 }
 
 function Hero() {
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setOffset(window.scrollY * 0.25);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-5 sm:px-6 text-center animate-fade-up">
-      <p
-        className="tracking-[0.18em] sm:tracking-[0.4em] uppercase text-gold-deep max-w-full"
-        style={{ fontSize: "clamp(0.56rem, 2vw, 0.875rem)" }}
-      >
-        You are invited to the wedding of
-      </p>
-      <h1
-        className="mt-4 font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
-        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
-      >
-        Sweatha
-      </h1>
-      <div className="flex items-center gap-4 my-1">
-        <span className="h-px w-12 sm:w-16 bg-gold/60" />
-        <span className="font-script text-3xl text-gold-deep">&amp;</span>
-        <span className="h-px w-12 sm:w-16 bg-gold/60" />
-      </div>
+    <section className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 sm:px-6 text-center">
+      {/* Background image with blur + parallax */}
       <div
-        className="font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
-        style={{ fontSize: "clamp(3rem, 15vw, 8.5rem)" }}
-      >
-        Sakthivel
-      </div>
-      <Ornament />
-      <p
-        className="text-muted-foreground italic"
-        style={{ fontSize: "clamp(0.95rem, 2.4vw, 1.125rem)" }}
-      >
-        Together with their families
-      </p>
-      <p
-        className="mt-2 tracking-[0.3em] uppercase text-gold-deep"
-        style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.875rem)" }}
-      >
-        Scroll Down
-      </p>
-      <div className="mt-2 animate-float text-gold">
-        <Heart className="h-4 w-4 fill-current" />
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-cover bg-center scale-110"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          filter: "blur(4px)",
+          transform: `translateY(${offset}px) scale(1.15)`,
+          willChange: "transform",
+        }}
+      />
+      {/* Dark + maroon overlays for readability */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-black/55" />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(80,10,25,0.35) 0%, rgba(0,0,0,0.65) 100%)",
+        }}
+      />
+
+      <div className="relative z-10 animate-fade-up flex flex-col items-center">
+        <p
+          className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold max-w-full drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+          style={{ fontSize: "clamp(0.6rem, 2vw, 0.9rem)" }}
+        >
+          You are invited to the wedding of
+        </p>
+        <h1
+          className="mt-6 font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+          style={{
+            fontSize: "clamp(3rem, 15vw, 8.5rem)",
+            textShadow:
+              "0 2px 18px rgba(0,0,0,0.55), 0 0 30px rgba(212,160,23,0.25)",
+          }}
+        >
+          Sweatha
+        </h1>
+        <div className="flex items-center gap-4 my-2">
+          <span className="h-px w-12 sm:w-16 bg-gold/70" />
+          <span className="font-script text-3xl text-gold drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">&amp;</span>
+          <span className="h-px w-12 sm:w-16 bg-gold/70" />
+        </div>
+        <div
+          className="font-script text-gradient-gold script-safe script-safe-nowrap max-w-full"
+          style={{
+            fontSize: "clamp(3rem, 15vw, 8.5rem)",
+            textShadow:
+              "0 2px 18px rgba(0,0,0,0.55), 0 0 30px rgba(212,160,23,0.25)",
+          }}
+        >
+          Sakthivel
+        </div>
+        <Ornament />
+        <p
+          className="text-white/90 italic drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
+          style={{ fontSize: "clamp(0.95rem, 2.4vw, 1.125rem)" }}
+        >
+          Together with their families
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-2 animate-float">
+          <p
+            className="tracking-[0.35em] uppercase text-gold drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
+            style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.85rem)" }}
+          >
+            Scroll Down
+          </p>
+          <ChevronDown className="h-5 w-5 text-gold" />
+        </div>
       </div>
     </section>
   );
