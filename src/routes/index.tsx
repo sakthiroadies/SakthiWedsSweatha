@@ -93,14 +93,16 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
         className="absolute inset-0 w-full h-full object-cover md:object-[center_60%]"
       />
       <div className="absolute inset-0 bg-black/20" />
-      <div className="z-10 flex flex-col items-center gap-3">
-        <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-white animate-float">
-          <Heart className="h-7 w-7" style={{ color: "hsl(330, 70%, 60%)" }} fill="currentColor" />
+      {!started && (
+        <div className="z-10 flex flex-col items-center gap-3">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-white animate-float">
+            <Heart className="h-7 w-7" style={{ color: "hsl(330, 70%, 60%)" }} fill="currentColor" />
+          </div>
+          <p className="font-serif text-lg tracking-[0.2em] uppercase drop-shadow-lg text-white">
+            Open the Invitation
+          </p>
         </div>
-        <p className="font-serif text-lg tracking-[0.2em] uppercase drop-shadow-lg text-white">
-          Open the Invitation
-        </p>
-      </div>
+      )}
     </div>
   );
 }
