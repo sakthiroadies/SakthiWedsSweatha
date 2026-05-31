@@ -46,34 +46,36 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
   const [closing, setClosing] = useState(false);
   const handle = () => {
     setClosing(true);
-    setTimeout(onOpen, 1200);
+    setTimeout(onOpen, 1100);
   };
   return (
-    <div className="fixed inset-0 z-50 pointer-events-none">
-      <div
-        className={`absolute inset-y-0 left-0 w-1/2 bg-cover bg-right pointer-events-auto ${closing ? "animate-curtain-left" : ""}`}
-        style={{ backgroundImage: `url(${introPoster})` }}
+    <div
+      onClick={handle}
+      className={`fixed inset-0 z-50 flex items-end justify-center pb-20 cursor-pointer transition-all duration-[1100ms] ease-in-out ${
+        closing ? "opacity-0 scale-110" : "opacity-100 scale-100"
+      }`}
+      style={{ width: "100vw", height: "100vh" }}
+      role="button"
+      aria-label="Open the invitation"
+    >
+      <img
+        src={introPoster}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
       />
-      <div
-        className={`absolute inset-y-0 right-0 w-1/2 bg-cover bg-left pointer-events-auto ${closing ? "animate-curtain-right" : ""}`}
-        style={{ backgroundImage: `url(${introPoster})`, backgroundPosition: "left center" }}
-      />
-      {!closing && (
-        <div className="absolute inset-0 flex flex-col items-center justify-end pb-20 pointer-events-auto">
-          <button
-            onClick={handle}
-            className="group flex flex-col items-center gap-3 text-white"
-            aria-label="Open the invitation"
-          >
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 shadow-elegant animate-float">
-              <Heart className="h-6 w-6 text-rose-500 fill-rose-500" />
-            </span>
-            <span className="font-serif tracking-[0.35em] text-sm uppercase drop-shadow-lg group-hover:tracking-[0.45em] transition-all">
-              Open the Invitation
-            </span>
-          </button>
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="z-10 flex flex-col items-center gap-3">
+        <div
+          className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-white animate-float"
+        >
+          <Heart className="h-7 w-7" style={{ color: "hsl(330, 70%, 60%)" }} fill="currentColor" />
         </div>
-      )}
+        <p
+          className="font-serif text-lg tracking-[0.2em] uppercase drop-shadow-lg text-white"
+        >
+          Open the Invitation
+        </p>
+      </div>
     </div>
   );
 }
