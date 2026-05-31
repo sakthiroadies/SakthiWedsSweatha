@@ -216,34 +216,34 @@ function SaveTheDate() {
 
 function fireConfetti() {
   const colors = ["#d4a017", "#f5d76e", "#ffffff", "#e8b4b4"];
-  const end = Date.now() + 1600;
+  const end = Date.now() + 2200;
   const frame = () => {
     confetti({
-      particleCount: 1,
+      particleCount: 3,
       angle: 60,
-      spread: 38,
-      startVelocity: 28,
+      spread: 50,
+      startVelocity: 38,
       origin: { x: 0, y: 0.7 },
       colors,
-      scalar: 0.55,
-      ticks: 100,
+      scalar: 0.75,
+      ticks: 150,
     });
     confetti({
-      particleCount: 1,
+      particleCount: 3,
       angle: 120,
-      spread: 38,
-      startVelocity: 28,
+      spread: 50,
+      startVelocity: 38,
       origin: { x: 1, y: 0.7 },
       colors,
-      scalar: 0.55,
-      ticks: 100,
+      scalar: 0.75,
+      ticks: 150,
     });
-    if (Date.now() < end) setTimeout(frame, 120);
+    if (Date.now() < end) setTimeout(frame, 90);
   };
   frame();
 }
 
-const SCRATCH_REVEAL_THRESHOLD = 0.6;
+const SCRATCH_REVEAL_THRESHOLD = 0.5;
 const SCRATCH_SAMPLE_STEP = 8;
 
 function ScratchCard() {
