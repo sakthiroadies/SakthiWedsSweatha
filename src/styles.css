@@ -117,8 +117,19 @@
   50% { transform: translateY(-8px); }
 }
 
+@keyframes intro-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+@keyframes heart-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.06); }
+}
+
 @utility animate-curtain-left { animation: curtain-left 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
 @utility animate-curtain-right { animation: curtain-right 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
 @utility animate-fade-up { animation: fade-up 1s ease-out forwards; }
 @utility animate-shimmer { animation: shimmer 2.5s ease-in-out infinite; }
 @utility animate-float { animation: float 3s ease-in-out infinite; }
+@utility animate-intro-zoom { animation: intro-zoom 6s ease-out forwards; transform-origin: center; }
+@utility animate-heart-bounce { animation: heart-bounce 1.8s ease-in-out infinite; }
