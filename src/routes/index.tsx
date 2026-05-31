@@ -215,30 +215,35 @@ function SaveTheDate() {
 
 function fireConfetti() {
   const colors = ["#d4a017", "#f5d76e", "#ffffff", "#e8b4b4"];
-  const end = Date.now() + 3000;
+  const end = Date.now() + 1600;
   const frame = () => {
     confetti({
-      particleCount: 2,
+      particleCount: 1,
       angle: 60,
-      spread: 55,
-      startVelocity: 45,
+      spread: 38,
+      startVelocity: 28,
       origin: { x: 0, y: 0.7 },
       colors,
-      scalar: 0.9,
+      scalar: 0.55,
+      ticks: 100,
     });
     confetti({
-      particleCount: 2,
+      particleCount: 1,
       angle: 120,
-      spread: 55,
-      startVelocity: 45,
+      spread: 38,
+      startVelocity: 28,
       origin: { x: 1, y: 0.7 },
       colors,
-      scalar: 0.9,
+      scalar: 0.55,
+      ticks: 100,
     });
-    if (Date.now() < end) requestAnimationFrame(frame);
+    if (Date.now() < end) setTimeout(frame, 120);
   };
   frame();
 }
+
+const SCRATCH_REVEAL_THRESHOLD = 0.6;
+const SCRATCH_SAMPLE_STEP = 8;
 
 function ScratchCard() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -321,14 +326,20 @@ function ScratchCard() {
     const { x, y } = getPos(e);
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x, y, 30, 0, Math.PI * 2);
+    ctx.arc(x, y, 34, 0, Math.PI * 2);
     ctx.fill();
     const { width, height } = canvas;
     const data = ctx.getImageData(0, 0, width, height).data;
     let cleared = 0;
-    const total = data.length / 40;
-    for (let i = 3; i < data.length; i += 40) if (data[i] === 0) cleared++;
-    if (cleared / total >= 0.6) triggerReveal();
+    let total = 0;
+    for (let yIndex = 0; yIndex < height; yIndex += SCRATCH_SAMPLE_STEP) {
+      for (let xIndex = 0; xIndex < width; xIndex += SCRATCH_SAMPLE_STEP) {
+        total++;
+        const alpha = data[(yIndex * width + xIndex) * 4 + 3];
+        if (alpha < 32) cleared++;
+      }
+    }
+    if (total > 0 && cleared / total >= SCRATCH_REVEAL_THRESHOLD) triggerReveal();
   };
 
   return (
