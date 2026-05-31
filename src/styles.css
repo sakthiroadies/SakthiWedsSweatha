@@ -97,6 +97,16 @@
   color: transparent;
 }
 @utility shadow-elegant { box-shadow: var(--shadow-elegant); }
+@utility script-safe {
+  display: inline-block;
+  line-height: 1.35;
+  padding-block: 0.16em 0.24em;
+  padding-inline: 0.12em;
+}
+@utility script-safe-nowrap {
+  white-space: nowrap;
+  overflow: visible;
+}
 
 @keyframes curtain-left {
   to { transform: translateX(-100%); }
