@@ -261,11 +261,11 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section
-      className="relative min-h-[80vh] flex items-start sm:items-center justify-center bg-cover bg-center pt-6 pb-10 sm:pt-0 sm:pb-0"
+      className="relative min-h-[85vh] sm:min-h-[80vh] flex items-stretch sm:items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${saveTheDate})` }}
     >
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-2xl w-full">
+      <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-2xl w-full flex flex-col min-h-[85vh] sm:min-h-0 pt-3 pb-6 sm:py-0">
         <p
           className="tracking-[0.35em] sm:tracking-[0.4em] uppercase text-white/90"
           style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
@@ -278,8 +278,10 @@ function SaveTheDate() {
         >
           Sakthivel &amp; Sweatha
         </h2>
-        <Ornament />
-        <ScratchCard />
+        <div className="mt-auto sm:mt-0">
+          <Ornament />
+          <ScratchCard />
+        </div>
       </div>
     </section>
   );
