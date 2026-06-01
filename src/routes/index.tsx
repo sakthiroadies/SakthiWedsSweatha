@@ -629,7 +629,7 @@ function Timeline() {
             const left = i % 2 === 0;
             return (
               <div key={e.title} className="relative flex items-center animate-fade-up">
-                <div className={`w-1/2 ${left ? "pr-4 sm:pr-12 text-right" : "sm:order-3"}`}>
+                <div className={`w-1/2 ${left ? "pr-4 sm:pr-12 text-right" : ""}`}>
                   {left && (
                     <>
                       <h3 className="font-serif text-lg sm:text-2xl text-maroon font-semibold leading-snug">
