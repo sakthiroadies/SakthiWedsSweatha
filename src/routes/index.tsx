@@ -420,11 +420,11 @@ function ScratchCard() {
     <div className="mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
-        className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
+        className="relative w-full max-w-md lg:max-w-fit h-36 md:h-44 lg:h-32 lg:px-10 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <p
-            className="font-script text-gold leading-none"
+            className="font-script text-gold leading-none lg:whitespace-nowrap"
             style={{ fontSize: "clamp(2.8rem, 14vw, 5.5rem)" }}
           >
             18<sup className="text-[0.45em]">th</sup> June 2026
