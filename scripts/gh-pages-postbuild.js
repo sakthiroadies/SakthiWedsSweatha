@@ -57,3 +57,13 @@ ${scriptTag}
 const outputPath = path.resolve("dist/client/index.html");
 fs.writeFileSync(outputPath, html);
 console.log("Generated", outputPath);
+
+// SPA fallback so deep links like /SakthiWedsSweatha/anything work
+const notFoundPath = path.resolve("dist/client/404.html");
+fs.writeFileSync(notFoundPath, html);
+console.log("Generated", notFoundPath);
+
+// Disable Jekyll processing on GitHub Pages
+const noJekyllPath = path.resolve("dist/client/.nojekyll");
+fs.writeFileSync(noJekyllPath, "");
+console.log("Generated", noJekyllPath);
