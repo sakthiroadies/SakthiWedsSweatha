@@ -11,6 +11,13 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // GitHub Pages is static hosting, so ship a TanStack SPA shell with the
+    // router hydration data intact instead of relying on a server-rendered page.
+    spa: {
+      enabled: true,
+      maskPath: "/SakthiWedsSweatha/",
+      prerender: { outputPath: "/SakthiWedsSweatha/index" },
+    },
   },
   nitro: false,
   vite: {
