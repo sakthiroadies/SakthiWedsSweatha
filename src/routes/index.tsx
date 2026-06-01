@@ -6,7 +6,7 @@ import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
 import venueImg from "@/assets/venue.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-const saveTheDate = saveTheDateAsset.url;
+import bgMusic from "@/assets/bg-music.mp3.asset.json";
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
