@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
-import saveTheDate from "@/assets/save-the-date.jpg";
+import saveTheDateAsset from "@/assets/save-the-date.png.asset.json";
 import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
 import venueImg from "@/assets/venue.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-import scratchBg from "@/assets/scratch-bg.png.asset.json";
+const saveTheDate = saveTheDateAsset.url;
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
