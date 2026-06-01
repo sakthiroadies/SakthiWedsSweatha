@@ -186,7 +186,7 @@ function Hero() {
       {/* Background image with blur + parallax */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-cover bg-center lg:bg-[50%_10%] scale-110"
+        className="absolute inset-0 -z-20 bg-cover bg-center lg:bg-[50%_35%] scale-110"
         style={{
           backgroundImage: `url(${heroBg})`,
           filter: "blur(3px)",
@@ -261,7 +261,7 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section
-      className="relative min-h-[85vh] sm:min-h-[80vh] flex items-stretch sm:items-center justify-center bg-cover bg-center lg:bg-[50%_70%]"
+      className="relative min-h-[85vh] sm:min-h-[80vh] flex items-stretch sm:items-center justify-center bg-cover bg-center lg:bg-[50%_40%]"
       style={{ backgroundImage: `url(${saveTheDate})` }}
     >
       <div className="absolute inset-0 bg-black/50" />
