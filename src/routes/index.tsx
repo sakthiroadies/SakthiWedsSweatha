@@ -536,6 +536,36 @@ function Timeline() {
       time: "6:30 PM onwards",
     },
     {
+      Icon: Star,
+      title: "Grand Entry of the Couple",
+      date: "17th June 2026",
+      time: "07:00 PM onwards",
+    },
+    {
+      Icon: Users,
+      title: "Stage Meet & Greet",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
+    },
+    {
+      Icon: Music,
+      title: "DJ Music & Light Show",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
+    },
+    {
+      Icon: Cake,
+      title: "Cake Cutting & Toasts",
+      date: "17th June 2026",
+      time: "08:30 PM onwards",
+    },
+    {
+      Icon: UtensilsCrossed,
+      title: "Grand Buffet Dinner",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
+    },
+    {
       Icon: WeddingIcon,
       title: "Wedding Ceremony",
       date: "18th June 2026, Thursday",
