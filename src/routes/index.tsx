@@ -10,7 +10,6 @@ import bgMusic from "@/assets/bg-music.mp3.asset.json";
 const saveTheDate = saveTheDateAsset.url;
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
-const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
 const MAP_URL =
   "https://www.google.com/maps/search/?api=1&query=Sri+Narayani+Mahal+Sripuram+Vellore";
@@ -126,13 +125,13 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
       aria-label="Open the invitation"
     >
       <img
-        src={publicAsset("images/intro-poster.png")}
+        src="/images/intro-poster.png"
         alt=""
         className={`absolute inset-0 w-full h-full object-cover ${started ? "" : "animate-intro-zoom"}`}
       />
       <video
         ref={videoRef}
-        src={publicAsset("videos/intro.mp4")}
+        src="/videos/intro.mp4"
         loop
         muted
         playsInline
@@ -262,11 +261,11 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section
-      className="relative min-h-[85vh] sm:min-h-[80vh] flex items-stretch sm:items-center justify-center bg-cover bg-center lg:bg-[50%_55%]"
+      className="relative min-h-[85vh] sm:min-h-[80vh] flex items-stretch sm:items-center justify-center bg-cover bg-center lg:bg-[50%_40%]"
       style={{ backgroundImage: `url(${saveTheDate})` }}
     >
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-2xl w-full flex flex-col min-h-[85vh] sm:min-h-0 pt-3 pb-6 sm:py-0 lg:-translate-y-10">
+      <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-2xl w-full flex flex-col min-h-[85vh] sm:min-h-0 pt-3 pb-6 sm:py-0">
         <p
           className="tracking-[0.35em] sm:tracking-[0.4em] uppercase text-white/90"
           style={{ fontSize: "clamp(0.65rem, 2vw, 0.875rem)" }}
@@ -279,7 +278,7 @@ function SaveTheDate() {
         >
           Sakthivel &amp; Sweatha
         </h2>
-        <div className="mt-auto sm:mt-0 lg:mt-8">
+        <div className="mt-auto sm:mt-0">
           <Ornament />
           <ScratchCard />
         </div>
@@ -421,11 +420,11 @@ function ScratchCard() {
     <div className="mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
-        className="relative w-full max-w-md lg:max-w-fit h-36 md:h-44 lg:h-32 lg:px-10 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
+        className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <p
-            className="font-script text-gold leading-none lg:whitespace-nowrap"
+            className="font-script text-gold leading-none"
             style={{ fontSize: "clamp(2.8rem, 14vw, 5.5rem)" }}
           >
             18<sup className="text-[0.45em]">th</sup> June 2026
