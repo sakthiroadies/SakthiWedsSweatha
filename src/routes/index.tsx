@@ -186,7 +186,7 @@ function Hero() {
       {/* Background image with blur + parallax */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-cover bg-center lg:bg-[50%_35%] scale-110"
+        className="absolute inset-0 -z-20 bg-cover bg-center lg:bg-[50%_20%] scale-110"
         style={{
           backgroundImage: `url(${heroBg})`,
           filter: "blur(3px)",
