@@ -42,16 +42,36 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [opened, setOpened] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleOpen = () => {
     setOpened(true);
-    audioRef.current?.play().catch(() => {});
+    audioRef.current?.play().then(() => setPlaying(true)).catch(() => {});
+  };
+
+  const toggleMusic = () => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (a.paused) {
+      a.play().then(() => setPlaying(true)).catch(() => {});
+    } else {
+      a.pause();
+      setPlaying(false);
+    }
   };
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-      <audio ref={audioRef} src="/music/bg-music.mp3" loop preload="auto" className="hidden" />
+      <audio
+        ref={audioRef}
+        src="/music/bg-music.mp3"
+        loop
+        preload="auto"
+        className="hidden"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
       {!opened && <IntroCurtain onOpen={handleOpen} />}
       <Hero />
       <SaveTheDate />
@@ -60,6 +80,15 @@ function Index() {
       <Functions />
       <Venue />
       <Footer />
+      {opened && (
+        <button
+          onClick={toggleMusic}
+          aria-label={playing ? "Pause music" : "Play music"}
+          className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gold text-background shadow-lg shadow-black/30 backdrop-blur transition hover:scale-105 active:scale-95"
+        >
+          {playing ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 translate-x-[1px]" />}
+        </button>
+      )}
     </main>
   );
 }
