@@ -1,0 +1,20 @@
+image: oven/bun:1
+
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  variables:
+    VITE_BASE_PATH: "/SakthiWedsSweatha/"
+  script:
+    - bun install --frozen-lockfile
+    - bun run build
+    - bun run pages:postbuild
+  pages:
+    publish: dist/client
+  artifacts:
+    paths:
+      - dist/client
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

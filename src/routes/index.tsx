@@ -10,6 +10,7 @@ import bgMusic from "@/assets/bg-music.mp3.asset.json";
 const saveTheDate = saveTheDateAsset.url;
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
 const MAP_URL =
   "https://www.google.com/maps/search/?api=1&query=Sri+Narayani+Mahal+Sripuram+Vellore";
@@ -125,13 +126,13 @@ function IntroCurtain({ onOpen }: { onOpen: () => void }) {
       aria-label="Open the invitation"
     >
       <img
-        src="/images/intro-poster.png"
+        src={publicAsset("images/intro-poster.png")}
         alt=""
         className={`absolute inset-0 w-full h-full object-cover ${started ? "" : "animate-intro-zoom"}`}
       />
       <video
         ref={videoRef}
-        src="/videos/intro.mp4"
+        src={publicAsset("videos/intro.mp4")}
         loop
         muted
         playsInline
