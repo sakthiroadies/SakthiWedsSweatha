@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
-import saveTheDate from "@/assets/save-the-date.jpg";
+import saveTheDateAsset from "@/assets/save-the-date.png.asset.json";
 import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
 import venueImg from "@/assets/venue.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-import scratchBg from "@/assets/scratch-bg.png.asset.json";
+const saveTheDate = saveTheDateAsset.url;
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
@@ -417,13 +417,11 @@ function ScratchCard() {
     <div className="mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
-        className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant border border-gold/40 bg-cover bg-center"
-        style={{ backgroundImage: `url(${scratchBg.url})` }}
+        className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
       >
-        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <p
-            className="font-script text-gold leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+            className="font-script text-gold leading-none"
             style={{ fontSize: "clamp(2.8rem, 14vw, 5.5rem)" }}
           >
             18<sup className="text-[0.45em]">th</sup> June 2026
