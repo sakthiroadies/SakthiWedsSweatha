@@ -606,7 +606,7 @@ function Timeline() {
     },
   ];
   return (
-    <section className="py-20 sm:py-24 px-5 sm:px-6 bg-background">
+    <section className="pt-20 sm:pt-24 pb-32 sm:pb-24 px-5 sm:px-6 bg-background">
       <div className="text-center mb-12 sm:mb-16">
         <p
           className="tracking-[0.22em] sm:tracking-[0.4em] uppercase text-gold-deep"
