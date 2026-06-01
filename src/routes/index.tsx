@@ -415,7 +415,7 @@ function ScratchCard() {
   };
 
   return (
-    <div className="mt-6 flex flex-col items-center">
+    <div className="mt-20 sm:mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
         className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
