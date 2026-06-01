@@ -624,13 +624,13 @@ function Timeline() {
       </div>
       <div className="relative mx-auto max-w-2xl">
         <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent" />
-        <div className="space-y-10 sm:space-y-16">
+        <div className="space-y-16 sm:space-y-16">
           {events.map((e, i) => {
             const Icon = e.Icon;
             const left = i % 2 === 0;
             return (
               <div key={e.title} className="relative flex items-center animate-fade-up">
-                <div className={`w-1/2 ${left ? "pr-4 sm:pr-12 text-right" : ""}`}>
+                <div className={`w-1/2 ${left ? "pr-10 sm:pr-12 text-right" : ""}`}>
                   {left && (
                     <>
                       <h3 className="font-serif text-lg sm:text-2xl text-maroon font-semibold leading-snug">
