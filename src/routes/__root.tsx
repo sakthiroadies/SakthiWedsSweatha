@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "SakthiWedsSweatha" },
+      { name: "description", content: "An elegant, interactive wedding invitation website with a scratch-off reveal for the date and customizable music." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "SakthiWedsSweatha" },
+      { property: "og:description", content: "An elegant, interactive wedding invitation website with a scratch-off reveal for the date and customizable music." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "SakthiWedsSweatha" },
+      { name: "twitter:description", content: "An elegant, interactive wedding invitation website with a scratch-off reveal for the date and customizable music." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3ea014f-a558-40dc-8f3e-d4d2eba8237e/id-preview-4b5f3832--bec3ecec-bf74-4b93-9655-7d4acd75282f.lovable.app-1780335282713.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3ea014f-a558-40dc-8f3e-d4d2eba8237e/id-preview-4b5f3832--bec3ecec-bf74-4b93-9655-7d4acd75282f.lovable.app-1780335282713.png" },
     ],
     links: [
       {
