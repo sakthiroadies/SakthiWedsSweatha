@@ -261,7 +261,7 @@ function Hero() {
 function SaveTheDate() {
   return (
     <section
-      className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center"
+      className="relative min-h-[80vh] flex items-start sm:items-center justify-center bg-cover bg-center pt-6 pb-10 sm:pt-0 sm:pb-0"
       style={{ backgroundImage: `url(${saveTheDate})` }}
     >
       <div className="absolute inset-0 bg-black/50" />
