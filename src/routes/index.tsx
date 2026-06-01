@@ -387,14 +387,14 @@ function ScratchCard() {
     <div className="mt-6 flex flex-col items-center">
       <div
         ref={containerRef}
-        className="relative w-full max-w-md h-32 md:h-36 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
+        className="relative w-full max-w-md h-36 md:h-44 rounded-lg overflow-hidden shadow-elegant bg-white/10 backdrop-blur-sm border border-gold/40"
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <p
-            className="font-script text-gold leading-tight"
-            style={{ fontSize: "clamp(1.75rem, 7vw, 2.75rem)" }}
+            className="font-script text-gold leading-none"
+            style={{ fontSize: "clamp(2.8rem, 14vw, 5.5rem)" }}
           >
-            18<sup>th</sup> June 2026
+            18<sup className="text-[0.45em]">th</sup> June 2026
           </p>
         </div>
         {!maskGone && (
@@ -458,7 +458,7 @@ function Countdown() {
       >
         Counting down to our forever
       </p>
-      <div className="mt-10 mx-auto grid max-w-3xl grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
+      <div className="mt-10 mx-auto grid max-w-3xl grid-cols-4 gap-2 sm:gap-5">
         {items.map((it) => (
           <div
             key={it.label}
@@ -466,13 +466,13 @@ function Countdown() {
           >
             <span
               className="font-serif text-gold leading-none tabular-nums"
-              style={{ fontSize: "clamp(2.25rem, 9vw, 4rem)" }}
+              style={{ fontSize: "clamp(1.5rem, 6vw, 4rem)" }}
             >
               {now === null ? "--" : String(it.value).padStart(2, "0")}
             </span>
             <span
-              className="mt-2 tracking-[0.25em] uppercase text-white/75"
-              style={{ fontSize: "clamp(0.6rem, 1.6vw, 0.8rem)" }}
+              className="mt-1 sm:mt-2 tracking-[0.1em] sm:tracking-[0.25em] uppercase text-white/75"
+              style={{ fontSize: "clamp(0.55rem, 1.4vw, 0.8rem)" }}
             >
               {it.label}
             </span>
