@@ -189,7 +189,7 @@ function Hero() {
         className="absolute inset-0 -z-20 bg-cover bg-center lg:bg-[50%_30%] scale-110"
         style={{
           backgroundImage: `url(${heroBg})`,
-          filter: "blur(4px)",
+          filter: "blur(3px)",
           transform: `translateY(${offset}px) scale(1.15)`,
           willChange: "transform",
         }}
