@@ -6,7 +6,7 @@ import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
 import venueImg from "@/assets/venue.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Heart, MapPin, Sparkles, Music, ChevronDown } from "lucide-react";
+import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed } from "lucide-react";
 
 const WEDDING_DATE = new Date("2026-06-18T07:30:00+05:30").getTime();
 const MAP_URL =
@@ -534,6 +534,36 @@ function Timeline() {
       title: "Reception",
       date: "17th June 2026, Wednesday",
       time: "6:30 PM onwards",
+    },
+    {
+      Icon: Star,
+      title: "Grand Entry of the Couple",
+      date: "17th June 2026",
+      time: "07:00 PM onwards",
+    },
+    {
+      Icon: Users,
+      title: "Stage Meet & Greet",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
+    },
+    {
+      Icon: Music,
+      title: "DJ Music & Light Show",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
+    },
+    {
+      Icon: Cake,
+      title: "Cake Cutting & Toasts",
+      date: "17th June 2026",
+      time: "08:30 PM onwards",
+    },
+    {
+      Icon: UtensilsCrossed,
+      title: "Grand Buffet Dinner",
+      date: "17th June 2026",
+      time: "07:30 PM onwards",
     },
     {
       Icon: WeddingIcon,
