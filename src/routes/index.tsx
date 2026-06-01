@@ -6,6 +6,7 @@ import receptionImg from "@/assets/reception.jpg";
 import weddingImg from "@/assets/wedding.jpg";
 import venueImg from "@/assets/venue.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+import bgMusic from "@/assets/bg-music.mp3.asset.json";
 const saveTheDate = saveTheDateAsset.url;
 import { Heart, MapPin, Sparkles, Music, ChevronDown, Star, Users, Cake, UtensilsCrossed, Play, Pause } from "lucide-react";
 
@@ -66,7 +67,7 @@ function Index() {
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <audio
         ref={audioRef}
-        src="/music/bg-music.mp3"
+        src={bgMusic.url}
         loop
         preload="auto"
         className="hidden"
