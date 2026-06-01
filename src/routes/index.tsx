@@ -643,7 +643,7 @@ function Timeline() {
                 <div className="absolute left-1/2 -translate-x-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-gold shadow-elegant text-white z-10">
                   <Icon className="h-6 w-6" />
                 </div>
-                <div className={`w-1/2 ${!left ? "pl-10 sm:pl-12 text-left" : "sm:order-3"}`}>
+                <div className={`w-1/2 ${!left ? "pl-10 sm:pl-12 text-left" : ""}`}>
                   {!left && (
                     <>
                       <h3 className="font-serif text-lg sm:text-2xl text-maroon font-semibold leading-snug">
