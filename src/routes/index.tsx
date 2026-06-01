@@ -15,13 +15,13 @@ const MAP_URL =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sweatha & Sakthivel — Wedding Invitation" },
+      { title: "Sakthivel & Sweatha — Wedding Invitation" },
       {
         name: "description",
         content:
-          "Together with our families, we joyfully invite you to celebrate the wedding of V. Sweatha and R. Sakthivel — 17th & 18th June 2026, Vellore.",
+          "Together with our families, we joyfully invite you to celebrate the wedding of R. Sakthivel and V. Sweatha — 17th & 18th June 2026, Vellore.",
       },
-      { property: "og:title", content: "Sweatha & Sakthivel — Wedding Invitation" },
+      { property: "og:title", content: "Sakthivel & Sweatha — Wedding Invitation" },
       {
         property: "og:description",
         content:
@@ -189,7 +189,7 @@ function Hero() {
               "0 2px 18px rgba(0,0,0,0.55), 0 0 30px rgba(212,160,23,0.25)",
           }}
         >
-          Sweatha
+          Sakthivel
         </h1>
         <div className="flex items-center gap-4 my-2">
           <span className="h-px w-12 sm:w-16 bg-gold/70" />
@@ -204,7 +204,7 @@ function Hero() {
               "0 2px 18px rgba(0,0,0,0.55), 0 0 30px rgba(212,160,23,0.25)",
           }}
         >
-          Sakthivel
+          Sweatha
         </div>
         <Ornament />
         <p
@@ -245,7 +245,7 @@ function SaveTheDate() {
           className="font-script mt-3 text-gold script-safe script-safe-nowrap max-w-full"
           style={{ fontSize: "clamp(2.1rem, 10.5vw, 6rem)" }}
         >
-          Sweatha &amp; Sakthivel
+          Sakthivel &amp; Sweatha
         </h2>
         <Ornament />
         <ScratchCard />
@@ -722,7 +722,7 @@ function Footer() {
           fontSize: "clamp(1.6rem, 5.5vw, 2.5rem)",
         }}
       >
-        Sweatha &amp; Sakthivel
+        Sakthivel &amp; Sweatha
       </h3>
       <p
         className="mt-3 tracking-[0.32em] uppercase text-muted-foreground"
