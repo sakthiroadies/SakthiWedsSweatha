@@ -590,35 +590,38 @@ function Timeline() {
         <Ornament />
       </div>
       <div className="relative mx-auto max-w-2xl">
-        <div className="absolute left-6 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent" />
+        <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent" />
         <div className="space-y-10 sm:space-y-16">
           {events.map((e, i) => {
             const Icon = e.Icon;
             const left = i % 2 === 0;
             return (
               <div key={e.title} className="relative flex items-center animate-fade-up">
-                {/* Mobile: stacked */}
-                <div className="sm:hidden pl-16 w-full">
-                  <h3 className="font-serif text-xl text-maroon font-semibold leading-snug">
-                    {e.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
-                  <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
+                <div className={`w-1/2 ${left ? "pr-4 sm:pr-12 text-right" : "sm:order-3"}`}>
+                  {left && (
+                    <>
+                      <h3 className="font-serif text-lg sm:text-2xl text-maroon font-semibold leading-snug">
+                        {e.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
+                      <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
+                    </>
+                  )}
                 </div>
-                {/* Desktop: alternating */}
-                <div
-                  className={`hidden sm:block w-1/2 ${left ? "pr-12 text-right" : "pl-12 order-3 text-left"}`}
-                >
-                  <h3 className="font-serif text-2xl text-maroon font-semibold leading-snug">
-                    {e.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
-                  <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
-                </div>
-                <div className="absolute left-6 sm:left-1/2 -translate-x-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-gold shadow-elegant text-white z-10">
+                <div className="absolute left-1/2 -translate-x-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-gold shadow-elegant text-white z-10">
                   <Icon className="h-6 w-6" />
                 </div>
-                <div className={`hidden sm:block w-1/2 ${left ? "order-3" : ""}`} />
+                <div className={`w-1/2 ${!left ? "pl-10 sm:pl-12 text-left" : "sm:order-3"}`}>
+                  {!left && (
+                    <>
+                      <h3 className="font-serif text-lg sm:text-2xl text-maroon font-semibold leading-snug">
+                        {e.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.date}</p>
+                      <p className="text-sm text-gold-deep mt-0.5 italic">{e.time}</p>
+                    </>
+                  )}
+                </div>
               </div>
             );
           })}
