@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "SakthiWedsSweatha" },
       { name: "twitter:description", content: "An elegant, interactive wedding invitation website with a scratch-off reveal for the date and customizable music." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2aJJhJCT6pTs14QWCldZQDW1Uaf2/social-images/social-1780336913141-Media_(2).webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2aJJhJCT6pTs14QWCldZQDW1Uaf2/social-images/social-1780336913141-Media_(2).webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2aJJhJCT6pTs14QWCldZQDW1Uaf2/social-images/social-1780399463788-Media_(1).webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2aJJhJCT6pTs14QWCldZQDW1Uaf2/social-images/social-1780399463788-Media_(1).webp" },
     ],
     links: [
       {
